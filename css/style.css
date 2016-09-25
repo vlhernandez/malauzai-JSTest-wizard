@@ -1,0 +1,102 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #e6ddde;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 75%;
+  margin: 0 auto;
+}
+
+nav .steps {
+  text-align: center;
+}
+
+nav .steps a,
+nav .steps a:link {
+  color: #503b3e;
+}
+
+nav .steps div:first-child {
+  background: #916a70;
+}
+
+nav .steps div:first-child a {
+  color: #fff;
+}
+
+nav .steps > * {
+  display: inline-block;
+  width: 50px;
+  border: 1px solid #916a70;
+  border-radius:50%;
+  text-align: center;
+  position: relative;
+  margin-right: 35px;
+  padding: 25px 8px;
+}
+
+.steps div:after {
+  content:"";
+  height: 5px;
+  width: 40px;
+  background: #916a70;
+  position: absolute;
+  top: 45%;
+  left: 100%;
+}
+.steps div:last-of-type:after {
+  content:"";
+  display: none;
+}
+
+nav .step-ctrl {
+  text-transform: uppercase;
+  text-align: right;
+}
+
+nav .step-ctrl > *{
+  display: inline-block;
+  color: #fff;
+  background: #916a70;
+  border-radius: 6px;
+  margin: .5em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+}
+
+nav .step-ctrl > *:hover{
+  background: #503b3e;
+}
+
+.wiz-content-wrapper {
+  background: #fafafa;
+  border: solid 1px #503b3e;
+  border-radius: 6px;
+  padding: 1%;
+}
+
+.wiz-content-wrapper div[id^="step"] {
+  border: solid 1px green;
+}
+
+
+.step-is-active {
+  background-color: yellow;
+}
+
+.alert {
+  text-align: center;
+}
+
+.isActive {
+  display: block;
+}
