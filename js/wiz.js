@@ -4,10 +4,17 @@
     2a. Highlight Step 1 bubble
     2b. Show Step 1 Content
   3. User Clicks Next
-    3a. Capture and save all inputs
-    3b. Hide step 1 box
-    3c. Display next step box
+    3a. Increment Step
+    3b. Remove Hightlight from previous step bubble
+    3c. Hide previous step content
     3d. Highlight next step bubble;
+    3e. Display next step content;
+  4. User Clicks previous
+    4a. Remove Hightlight from current step bubble
+    4b. Hide current step content
+    4c. Decrement Step
+    4d. Highlight previous step bubble;
+    4e. Display previous step content;
 */
 
 var currentUser = {};
@@ -23,6 +30,13 @@ function resetBubbleColors() {
   });
 }
 
+function colorCurrentBubble() {
+  var stepIndicator = document.querySelector(".steps").children;
+  stepIndicator[currentStep].style.background = "#916a70";
+  stepIndicator[currentStep].children[0].style.color = "#fff";
+}
+
+
 
 function resetContentSections() {
   var allContent = document.querySelectorAll('.step-section');
@@ -33,58 +47,59 @@ function resetContentSections() {
   });
 }
 
+
 function showCurrentSection() {
-  var currentSection = document.querySelector('#step' + currentStep );
+  var currentSection = document.querySelector( '#step' + currentStep );
   currentSection.classList.add('isActive');
 }
 
-function colorCurrentBubble() {
-  var stepIndicator = document.querySelector(".steps").children;
-  stepIndicator[currentStep].style.background = "#916a70";
-  stepIndicator[currentStep].children[0].style.color = "#fff";
-}
 
 function getInputs() {
   var formInputs = document.querySelector('form');
   [].forEach.call(formInputs, function(input) {
-    if( input.type === 'checkbox') {
+    if( input.type === 'checkbox' ) {
       if(!currentUser.hasOwnProperty(input.name)) {
         currentUser[input.name] = [];
       }
-      currentUser[input.name].push(" " + input.value);
+      if (input.checked) {
+        currentUser[input.name].push(input.value);
+      }
     } else {
       currentUser[input.name] = input.value;
     }
   });
-  console.log('currentUser...', currentUser);
 }
 
 
 function displayInputs() {
-  var textNode = "";
   for (var key in currentUser) {
     if (currentUser[key] != "") {
-      textNode = textNode + '<p><span class="entryTitle">' + key + ': </span>' + currentUser[key] + '</p>';
+      var userInputs = document.createElement('p');
+      var titleSpan = document.createElement('span');
+      titleSpan.classList.add('entryTitle');
+      var inputTitle = document.createTextNode(key + ": ");
+      var inputValue =  document.createTextNode(currentUser[key]);
+      titleSpan.appendChild(inputTitle);
+      userInputs.appendChild(titleSpan);
+      userInputs.appendChild(inputValue);
+      document.querySelector('#step3').appendChild(userInputs);
     }
   }
-  document.querySelector('#step3').innerHTML =  textNode;
 }
 
 
-/* NEXT STEP CONTROLLER */
 
 function nextStep() {
   currentStep++;
 
-  resetContentSections();
-  showCurrentSection();
-
   if ( currentStep === lastStep ) {
-    debugger
     document.querySelector('.alert').innerHTML = '<h2>All Done!</h2>';
-    document.querySelector(".step-ctrl").style.display = "none";
+    document.querySelector(".isActive").classList.add('complete');
     return;
   }
+
+  resetContentSections();
+  showCurrentSection();
 
   if ( currentStep < lastStep ) {
     resetBubbleColors();
@@ -92,6 +107,7 @@ function nextStep() {
   }
 
   if (currentStep === lastStep - 1) {
+    //change button from next to submit and hide previous button
     var advanceBtns = document.querySelector(".step-ctrl").children;
     [].forEach.call(advanceBtns, function(btn) {
       if (btn.innerHTML === 'prev' ) {
@@ -100,10 +116,13 @@ function nextStep() {
         btn.innerHTML = "Submit";
       }
     });
+
     getInputs();
     displayInputs();
   }
 }
+
+
 
 function prevStep() {
   var stepIndicator = document.querySelector(".steps").children;
