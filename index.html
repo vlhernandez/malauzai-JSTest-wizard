@@ -12,10 +12,10 @@
   <div class="wrapper">
     <nav>
       <div class="steps">
-        <div><a href="#step1">1</a></div>
-        <div><a href="#step2">2</a></div>
-        <div><a href="#step3">3</a></div>
-        <div><a href="#step4">4</a></div>
+        <div><a href="#step0">1</a></div>
+        <div><a href="#step1">2</a></div>
+        <div><a href="#step2">3</a></div>
+        <div><a href="#step3">4</a></div>
       </div>
       <div class="step-ctrl">
         <div>prev</div>
@@ -25,9 +25,9 @@
     <div class="alert"></div>
     <div class="wiz-content-wrapper">
       <section>
-        <div id="step1" class="step-section">
+        <form>
+        <div id="step0" class="step-section">
           <header><h3>Step1: <span>Tell us about yourself</span></h3></header>
-          <form>
             <div>
               <label>First Name: </label>
               <input type="text" name="first_name" placeholder:"First Name" autocomplete="given-name">
@@ -49,29 +49,25 @@
               <label>Email: </label>
               <input type="email" name="email" placeholder:"email@address.com">
             </div>
-          </form>
         </div>
-        <div id="step2" class="step-section">
+        <div id="step1" class="step-section">
           <header><h3>Step2: <span>Are You Social?</span></h3></header>
-          <form>
             <div>
               <label>Twitter: </label>
               <input type="url" name="twitter" placeholder:"twitter.com/name">
               <label>Linkedin: </label>
-              <input type="url" name="email" placeholder:"linkedin.com/name">
+              <input type="url" name="linkedin" placeholder:"linkedin.com/name">
             </div>
             <div>
-              <label><input type="checkbox" value="soccer">Soccer</label>
-              <label><input type="checkbox" value="football">Football</label>
-              <label><input type="checkbox" value="baseball">Baseball</label>
-              <label><input type="checkbox" value="hiking">Hiking</label>
-              <label><input type="checkbox" value="sleeping">Sleeping</label>
+              <label><input type="checkbox" name="hobbies" value="soccer">Soccer</label>
+              <label><input type="checkbox" name="hobbies" value="football">Football</label>
+              <label><input type="checkbox" name="hobbies" value="baseball">Baseball</label>
+              <label><input type="checkbox" name="hobbies" value="hiking">Hiking</label>
+              <label><input type="checkbox" name="hobbies" value="sleeping">Sleeping</label>
             </div>
-          </form>
         </div>
-        <div id="step3" class="step-section">
+        <div id="step2" class="step-section">
           <header><h3>Step 3: <span>References</span></h3></header>
-          <form>
             <div>
               <label>Education Information: </label>
               <textarea name="education" rows="4" placeholder:"Tell us about your education"></textarea>
@@ -107,9 +103,9 @@
                 <input type="tel" name="ref3_phone" placeholder:"(832)205-0881">
               </div>
             </div>
-          </form>
         </div>
-        <div id="step4" class="step-section">
+      </form>
+        <div id="step3" class="step-section">
           <header><h3>Step 4: <span>Confirmation</span></h3></header>
           <p>Verify the information you entered is correct</p>
           <p>Name:</p>
@@ -131,7 +127,6 @@
           <p>Linkedin:</p>
           <p>Twitter:</p>
           <p>Education Information:</p>
-          <input type="submit">
         </div>
       </section>
     </div>

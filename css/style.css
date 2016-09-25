@@ -84,19 +84,31 @@ nav .step-ctrl > *:hover{
   padding: 1%;
 }
 
+.wiz-content-wrapper h3 {
+  text-align: center;
+}
+
+
+.wiz-content-wrapper .step-section {
+  padding: 20px;
+}
 .wiz-content-wrapper div[id^="step"] {
-  border: solid 1px green;
 }
 
-
-.step-is-active {
-  background-color: yellow;
+.entryTitle {
+  font-weight: bold;
+  text-transform: uppercase;
 }
+
 
 .alert {
   text-align: center;
 }
 
-.isActive {
+.step-section {
+  display: none;
+}
+
+.step-section.isActive {
   display: block;
 }

@@ -1,7 +1,8 @@
 /*
   1. page loads
   2. Show Step 1
-    2a. Highlight Step 1 bubble;
+    2a. Highlight Step 1 bubble
+    2b. Show Step 1 Content
   3. User Clicks Next
     3a. Capture and save all inputs
     3b. Hide step 1 box
@@ -24,9 +25,11 @@ function resetBubbleColors() {
 
 
 function resetContentSections() {
-  var contentSections = document.querySelectorAll('.step-section');
-  [].forEach.call(contentSections, function( step ) {
-    step.classList.remove = 'isActive';
+  var allContent = document.querySelectorAll('.step-section');
+  [].forEach.call(allContent, function(section){
+    if (section.classList.contains('isActive')){
+      section.classList.toggle('isActive');
+    }
   });
 }
 
@@ -35,7 +38,7 @@ function showCurrentSection() {
   currentSection.classList.add('isActive');
 }
 
-function colorStepBubble() {
+function colorCurrentBubble() {
   var stepIndicator = document.querySelector(".steps").children;
   stepIndicator[currentStep].style.background = "#916a70";
   stepIndicator[currentStep].children[0].style.color = "#fff";
@@ -44,7 +47,14 @@ function colorStepBubble() {
 function getInputs() {
   var formInputs = document.querySelector('form');
   [].forEach.call(formInputs, function(input) {
-    currentUser[input.name] = input.value;
+    if( input.type === 'checkbox') {
+      if(!currentUser.hasOwnProperty(input.name)) {
+        currentUser[input.name] = [];
+      }
+      currentUser[input.name].push(" " + input.value);
+    } else {
+      currentUser[input.name] = input.value;
+    }
   });
   console.log('currentUser...', currentUser);
 }
@@ -54,41 +64,31 @@ function displayInputs() {
   var textNode = "";
   for (var key in currentUser) {
     if (currentUser[key] != "") {
-      textNode = textNode + '<p>' + key + ': ' + currentUser[key] + '</p>';
+      textNode = textNode + '<p><span class="entryTitle">' + key + ': </span>' + currentUser[key] + '</p>';
     }
   }
-  document.querySelector('#step4').innerHTML =  textNode;
+  document.querySelector('#step3').innerHTML =  textNode;
 }
 
 
 /* NEXT STEP CONTROLLER */
 
 function nextStep() {
-  // resetContentSections();
-  // showCurrentSection();
-  var allContent = document.querySelectorAll('.step-section');
-  [].forEach.call(allContent, function(section){
-    if (section.classList.contains('isActive')){
-      section.classList.toggle('isActive');
-    }
-  });
-
-  var step = currentStep+1
-  var content = document.querySelector('#step' + step );
-  content.classList.toggle('isActive');
-
   currentStep++;
+
+  resetContentSections();
+  showCurrentSection();
+
   if ( currentStep === lastStep ) {
+    debugger
     document.querySelector('.alert').innerHTML = '<h2>All Done!</h2>';
     document.querySelector(".step-ctrl").style.display = "none";
-    displayInputs();
     return;
   }
 
   if ( currentStep < lastStep ) {
     resetBubbleColors();
-    colorStepBubble();
-    getInputs();
+    colorCurrentBubble();
   }
 
   if (currentStep === lastStep - 1) {
@@ -100,14 +100,18 @@ function nextStep() {
         btn.innerHTML = "Submit";
       }
     });
+    getInputs();
+    displayInputs();
   }
 }
 
 function prevStep() {
   var stepIndicator = document.querySelector(".steps").children;
   if (currentStep > 0) {
-    resetSteps();
+    resetBubbleColors();
     currentStep--;
+    resetContentSections();
+    showCurrentSection();
     stepIndicator[currentStep].style.background = "#916a70";
     stepIndicator[currentStep].children[0].style.color= "#fff";
   }
