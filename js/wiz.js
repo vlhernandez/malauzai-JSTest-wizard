@@ -15,11 +15,16 @@
     4c. Decrement Step
     4d. Highlight previous step bubble;
     4e. Display previous step content;
+  5. When Last Step
+    5a. hide previous button
+    5b. change next to submit button
+    5c. Display only non-empty fields
 */
 
 var currentUser = {};
 var currentStep = 0;  //indexing steps from 0
 var lastStep = 4;
+
 
 
 function resetBubbleColors() {
@@ -64,7 +69,7 @@ function getInputs() {
       if (input.checked) {
         currentUser[input.name].push(input.value);
       }
-    } else {
+    } else if (input.type !== 'fieldset') {
       currentUser[input.name] = input.value;
     }
   });
@@ -93,7 +98,11 @@ function nextStep() {
   currentStep++;
 
   if ( currentStep === lastStep ) {
-    document.querySelector('.alert').innerHTML = '<h2>All Done!</h2>';
+    var alert = document.createElement('h3');
+    alert.classList.add('success');
+    var success = document.createTextNode('All Done!')
+    alert.appendChild(success);
+    document.querySelector('.alert').appendChild(alert);
     document.querySelector(".isActive").classList.add('complete');
     return;
   }
@@ -116,7 +125,6 @@ function nextStep() {
         btn.innerHTML = "Submit";
       }
     });
-
     getInputs();
     displayInputs();
   }

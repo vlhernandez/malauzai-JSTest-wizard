@@ -12,8 +12,8 @@ a {
 }
 
 .wrapper {
-  max-width: 75%;
-  margin: 0 auto;
+  max-width: 670px;
+  margin: 40px auto;
 }
 
 nav .steps {
@@ -61,6 +61,7 @@ nav .steps > * {
 nav .step-ctrl {
   text-transform: uppercase;
   text-align: right;
+  margin: 10px 0;
 }
 
 nav .step-ctrl > *{
@@ -69,7 +70,7 @@ nav .step-ctrl > *{
   background: #916a70;
   border-radius: 6px;
   margin: .5em;
-  padding: 1em 1.5em;
+  padding: .75em 1.5em;
   cursor: pointer;
 }
 
@@ -81,18 +82,18 @@ nav .step-ctrl > *:hover{
   background: #fafafa;
   border: solid 1px #503b3e;
   border-radius: 6px;
-  padding: 1%;
+  /*padding: 1%;*/
 }
 
 .wiz-content-wrapper h3 {
   text-align: center;
+  text-transform: uppercase;
+  color: #503b3e;
 }
 
 
 .wiz-content-wrapper .step-section {
-  padding: 20px;
-}
-.wiz-content-wrapper div[id^="step"] {
+  padding: 40px;
 }
 
 .entryTitle {
@@ -102,8 +103,14 @@ nav .step-ctrl > *:hover{
 }
 
 
-.alert {
+.alert .success {
   text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #5cb85c;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 .step-section {
@@ -121,7 +128,7 @@ nav .step-ctrl > *:hover{
   position: relative;
 }
 .complete:after {
-  content:"Submitted!";
+  content: "";
   font-size: 40px;
   text-align: center;
   color: green;
@@ -130,6 +137,39 @@ nav .step-ctrl > *:hover{
   top: 0;
   left: 0;
   bottom: 0;
+  right: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: .25em;
+  font-size: 12px;
+  padding-bottom: 4px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='url'],
+textarea {
+  margin-bottom: 1.25em;
   width: 100%;
-  padding-top: 20%;
+  padding: 0.5em 0 .5em .5em;
+  border-radius: 3px;
+  box-shadow: none;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+input[type='checkbox'] {
+ width: auto;
+}
+
+fieldset {
+  margin-bottom: 20px;
+  padding: 1em;
+  border: solid 1px #ccc;
 }

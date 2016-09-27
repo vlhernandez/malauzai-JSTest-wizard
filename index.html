@@ -28,89 +28,86 @@
         <form>
         <div id="step0" class="step-section">
           <header><h3>Step1: <span>Tell us about yourself</span></h3></header>
-            <div>
-              <label>First Name: </label>
-              <input type="text" name="first_name" placeholder:"First Name" autocomplete="given-name">
-              <label>Last Name: </label>
-              <input type="text" name="last_name" placeholder:"Last Name" autocomplete="family-name">
-            </div>
-            <div>
-              <label>Address: </label>
-              <input type="text" name="address" placeholder:"First Name">
-              <label>Address Continued: </label>
-              <input type="text" name="address2" autocomplete="address-line2">
+          <label>First Name </label>
+          <input type="text" name="first_name" placeholder="First Name" autocomplete="given-name">
 
-            </div>
-            <div>
-              <label>Home Phone: </label>
-              <input type="tel" name="home_phone" placeholder:"(832)205-0881">
-              <label>Cell Phone: </label>
-              <input type="tel" name="cell_phone" placeholder:"(832)205-0881">
-              <label>Email: </label>
-              <input type="email" name="email" placeholder:"email@address.com">
-            </div>
+          <label>Last Name </label>
+          <input type="text" name="last_name" placeholder="Last Name" autocomplete="family-name">
+
+          <label>Address </label>
+          <input type="text" name="address" placeholder="Address">
+
+          <label>Address Continued </label>
+          <input type="text" name="address2" autocomplete="address-line2">
+
+          <label>Home Phone </label>
+          <input type="tel" name="home_phone" placeholder="(123)456-7890">
+
+          <label>Cell Phone </label>
+          <input type="tel" name="cell_phone" placeholder="(123)456-7890">
+
+          <label>Email </label>
+          <input type="email" name="email" placeholder="email@address.com">
         </div>
         <div id="step1" class="step-section">
           <header><h3>Step2: <span>Are You Social?</span></h3></header>
-            <div>
-              <label>Twitter: </label>
-              <input type="url" name="twitter" placeholder:"twitter.com/name">
-              <label>Linkedin: </label>
-              <input type="url" name="linkedin" placeholder:"linkedin.com/name">
-            </div>
-            <div>
+            <label>Twitter </label>
+            <input type="url" name="twitter" placeholder="twitter.com/username">
+
+            <label>Linkedin </label>
+            <input type="url" name="linkedin" placeholder="linkedin.com/username">
+
+            <fieldset>
+              <legend>Do you have any hobbies?</legend>
               <label><input type="checkbox" name="hobbies" value="soccer">Soccer</label>
               <label><input type="checkbox" name="hobbies" value="football">Football</label>
               <label><input type="checkbox" name="hobbies" value="baseball">Baseball</label>
               <label><input type="checkbox" name="hobbies" value="hiking">Hiking</label>
               <label><input type="checkbox" name="hobbies" value="sleeping">Sleeping</label>
-            </div>
+            </fieldset>
         </div>
         <div id="step2" class="step-section">
           <header><h3>Step 3: <span>References</span></h3></header>
-            <div>
-              <label>Education Information: </label>
-              <textarea name="education" rows="4" placeholder:"Tell us about your education"></textarea>
-            </div>
-            <div>
-              <label>Current Employer </label>
-              <input type="text" name="company" placeholder:"Company Name">
-            </div>
-            <div>
-              <p>Please Provide three References</p>
-              <div>
-                <label>Reference 1: Name</label>
-                <input type="text" name="ref1" placeholder:"Name">
-                <label>Email</label>
-                <input type="email" name="ref1_email" placeholder:"name@company.com">
-                <label>Phone: </label>
-                <input type="tel" name="ref1_phone" placeholder:"(832)205-0881">
-              </div>
-              <div>
-                <label>Reference 2: Name</label>
-                <input type="text" name="ref2" placeholder:"Name">
-                <label>Email</label>
-                <input type="email" name="ref2_email" placeholder:"name@company.com">
-                <label>Phone: </label>
-                <input type="tel" name="ref2_phone" placeholder:"(832)205-0881">
-              </div>
-              <div>
-                <label>Reference 3: Name</label>
-                <input type="text" name="ref3" placeholder:"Name">
-                <label>Email</label>
-                <input type="email" name="ref3_email" placeholder:"name@company.com">
-                <label>Phone: </label>
-                <input type="tel" name="ref3_phone" placeholder:"(832)205-0881">
-              </div>
-            </div>
-        </div>
-      </form>
+            <label>Education Information </label>
+            <textarea name="education" rows="4" placeholder="Tell us about your education"></textarea>
+
+            <label>Current Employer </label>
+            <input type="text" name="company" placeholder="Company Name">
+            <fieldset>
+              <legend>Reference 1</legend>
+              <label>Reference Name</label>
+              <input type="text" name="ref1" placeholder="Name">
+              <label>Email</label>
+              <input type="email" name="ref1_email" placeholder="name@company.com">
+              <label>Phone: </label>
+              <input type="tel" name="ref1_phone" placeholder="(123)456-7890">
+            </fieldset>
+            <fieldset>
+              <legend>Reference 2</legend>
+              <label>Reference Name</label>
+              <input type="text" name="ref2" placeholder="Name">
+              <label>Email</label>
+              <input type="email" name="ref2_email" placeholder="name@company.com">
+              <label>Phone: </label>
+              <input type="tel" name="ref2_phone" placeholder="(123)456-7890">
+            </fieldset>
+            <fieldset>
+              <legend>Reference 3</legend>
+              <label>Reference Name</label>
+              <input type="text" name="ref3" placeholder="Name">
+              <label>Email</label>
+              <input type="email" name="ref3_email" placeholder="name@company.com">
+              <label>Phone: </label>
+              <input type="tel" name="ref3_phone" placeholder="(123)456-7890">
+            </fieldset>
+          </div>
+        </form>
         <div id="step3" class="step-section">
-          <header><h3>Step 4: <span>Confirmation</span></h3></header>
+          <header><h3>Step 4: <span>Confirm all information then click Submit</span></h3></header>
         </div>
       </section>
-    </div>
-  </div>
+    </div> <!-- .wiz-content-wrapper -->
+  </div> <!-- .wrapper -->
   <script src="js/wiz.js"></script>
 </body>
 </html>
